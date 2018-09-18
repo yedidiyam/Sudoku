@@ -68,7 +68,7 @@ class Board():
         else:
             for x in range(9):
                 for y in range(9):
-                    if self.get_value(x, y) == 0:
+                    if self.board[x][y].value == 0:
                         row = x
                         column = y
                         break
