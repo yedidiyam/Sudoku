@@ -35,6 +35,17 @@ class Cell:
 # the board class
 class Board():
 ## init(9x9 list of lists)
+
+    # initial setup
+    def create_puzzle(self, number_dict):
+        # accepts a dictionary with row,column as keys and the value for that cell as value
+        # eg. {'0,0': 4, '1,5': 9}
+        for key, value in number_dict.items():
+            row = int(key.split(',')[0])
+            column = int(key.split(',')[1])
+
+            self.board[row][column].enter_value(value)
+
     ## print_board()
     def print_board(self):
         print('\n')
@@ -47,14 +58,15 @@ class Board():
             print('\n  -----------------------------------')
         print('\n')
         return ''
-## is_full()
+
+    ## is_full()
     def is_full(board):
         for x in range(9):
             for y in range (9):
                 if board[x][y] == 0:
                     return False
                 return True
-                
+
 ## get_value() # return a specific value based on row and column indices
 ## enter_value(row, column, value) # enter a value into a specific cell by calling the enter_value() method on the cell object
 ## find_possibilities()
@@ -96,3 +108,6 @@ class Board():
         # if no solution is found, the cell is emptied and
         # other possibilities are explored
         self.enter_value(row, column, 0)
+
+b = Board()
+b.print_board()
