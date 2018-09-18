@@ -1,5 +1,9 @@
 # the cell class
 class Cell:
+
+    def cross (A,B):
+        return [a+b for a in A for b in B]
+
     def __init__(self, row, col, value=0):
         self.value=value
         self.row=row
@@ -24,17 +28,23 @@ class Cell:
             grid = 8
         self.grid=grid
     #gotta be a more efficient way to do this lol^^^
+    # personally, i am a huge fan of this ^ and totally endorse this
+
     #returns value of row, column, and grid attributes in that order
+    def __str__(self):
+        return str(self.value)
     def get_position(self):
         return self.row, self.col, self.grid
     #sets the value of the sudoku cell
     def enter_value(self,value):
         self.value=value
 
-
 # the board class
+
 class Board():
-## init(9x9 list of lists)
+
+    def __init__(self):
+        self.board = [[Cell(i, j) for j in range(9)] for i in range(9)]
 
     # initial setup
     def create_puzzle(self, number_dict):
@@ -70,6 +80,21 @@ class Board():
 ## get_value() # return a specific value based on row and column indices
 ## enter_value(row, column, value) # enter a value into a specific cell by calling the enter_value() method on the cell object
 ## find_possibilities()
+    def find_rows(board, row, possibilies):
+        for i in range(9):
+            if board[row][i] != 0:
+                possibilities[i] = 1
+
+    def find_columns(board, column, possibilites):
+        for i in range(9):
+            if board[i][column] != 0:
+                possibilites[i] = 1
+
+    def find_possibilities(board, row, column, possibilies):
+        for i in range(9):
+            if board [row][column] != 0:
+                possbilites[i] = 1
+
     ## solve()
     def solve(self):
         # initialize variables to be used to identify empty cell
@@ -110,4 +135,7 @@ class Board():
         self.enter_value(row, column, 0)
 
 b = Board()
+b.create_puzzle({'0,0':4, '0,5':6})
+test = [x if x.grid==0 for x in y for y in b.board]
+print(test)
 b.print_board()
