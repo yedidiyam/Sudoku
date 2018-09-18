@@ -1,6 +1,35 @@
 # the cell class
-## value (initialize with value as 0)
-## enter_value()
+class Cell:
+    def __init__(self, row, col, value=0):
+        self.value=value
+        self.row=row
+        self.col=col
+        if self.row <= 2 and self.col <= 2:
+            grid = 0
+        elif (self.row > 2 and self.row <= 5) and self.col <= 2:
+            grid = 1
+        elif (self.row > 5 and self.row <= 8) and self.col <= 2:
+            grid = 2
+        elif (self.row <= 2) and self.col > 2 and (self.col <= 5):
+            grid = 3
+        elif (self.row > 2 and self.row <= 5) and (self.col > 2 and self.col <= 5):
+            grid = 4
+        elif (self.row > 5 and self.row <= 8) and (self.col > 2 and self.col <= 5):
+            grid = 5
+        elif (self.row <= 2) and self.col > 5 and (self.col <= 8):
+            grid = 6
+        elif (self.row > 2 and self.row <= 5) and (self.col > 5 and self.col <= 8):
+            grid = 7
+        elif (self.row > 5 and self.row <= 8) and (self.col > 5 and self.col <= 8):
+            grid = 8
+        self.grid=grid
+    #gotta be a more efficient way to do this lol^^^
+    #returns value of row, column, and grid attributes in that order
+    def get_position(self):
+        return self.row, self.col, self.grid
+    #sets the value of the sudoku cell
+    def enter_value(self,value):
+        self.value=value
 
 
 # the board class
