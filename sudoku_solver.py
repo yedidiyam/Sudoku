@@ -48,6 +48,13 @@ class Board():
         print('\n')
         return ''
 ## is_full()
+    def is_full(board):
+        for x in range(9):
+            for y in range (9):
+                if board[x][y] == 0:
+                    return False
+                return True
+                
 ## get_value() # return a specific value based on row and column indices
 ## enter_value(row, column, value) # enter a value into a specific cell by calling the enter_value() method on the cell object
 ## find_possibilities()
