@@ -136,6 +136,6 @@ class Board():
 
 b = Board()
 b.create_puzzle({'0,0':4, '0,5':6})
-test = [x if x.grid==0 for x in y for y in b.board]
+# test = [x if x.grid==0 for x in y for y in b.board]
 print(test)
 b.print_board()
